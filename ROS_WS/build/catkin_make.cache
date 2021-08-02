@@ -1,0 +1,2 @@
+tquad
+-DCATKIN_DEVEL_PREFIX=/home/cherif/OMCRI4CP/T-quad/ROS_WS/devel -DCMAKE_INSTALL_PREFIX=/home/cherif/OMCRI4CP/T-quad/ROS_WS/install -G Unix Makefiles

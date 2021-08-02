@@ -1,0 +1,8 @@
+prefix=/home/cherif/OMCRI4CP/T-quad/ROS_WS/devel
+
+Name: tquad
+Description: Description of tquad
+Version: 0.0.0
+Cflags: -I/home/cherif/OMCRI4CP/T-quad/ROS_WS/devel/include
+Libs: -L${prefix}/lib 
+Requires: 
