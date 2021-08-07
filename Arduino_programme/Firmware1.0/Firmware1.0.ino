@@ -21,8 +21,7 @@
 
 // Bibliothèque et message ros
 #include <ros.h>
-#include <std_msgs/Int64MultiArray.h>
-#include <std_msgs/Float64MultiArray.h>
+#include <std_msgs/Float32MultiArray.h>
 #include <ros/time.h>
 
 //============ Définitions et déclarations des moteurs et des encodeurs ================
@@ -92,21 +91,21 @@ volatile float sonar_range = 0;
 #define pin_bat 5
 
 // message ros pour publier les valeurs des capteurs
-std_msgs::Float64MultiArray pub_msgs;
+std_msgs::Float32MultiArray pub_msgs;
 char pub_label[]= "serial_pub_values";
 
 // Callback pour le contrôle des moteurs
-void subscriber_callback(const std_msgs::Int64MultiArray &value) {
+void subscriber_callback(const std_msgs::Float32MultiArray &value) {
   // Commande des moteurs
   moteurGaucheAvant.run(value.data[0]);
-  moteurGaucheArriere.run(value.data[1]);
-  moteurDroitAvant.run(value.data[2]);
-  moteurDroitArriere.run(value.data[3]);
+  moteurDroitAvant.run(value.data[1]);
+  moteurDroitArriere.run(value.data[2]);
+  moteurGaucheArriere.run(value.data[3]);
 }
 
 ros::NodeHandle nh;
 // Subscriber pour le contrôle des moteurs du Tquad
-ros::Subscriber<std_msgs::Int64MultiArray> serial_subscriber("tquad/serial_subscriber", subscriber_callback);
+ros::Subscriber<std_msgs::Float32MultiArray> serial_subscriber("tquad/serial_subscriber", subscriber_callback);
 // Publisher pour les valeurs des capteurs du Tquad
 ros::Publisher serial_publisher("tquad/serial_publisher", &pub_msgs);
 

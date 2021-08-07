@@ -29,7 +29,7 @@ class TquadDriver():
         H = np.array([[-self.lenght - self.width, 1, -1], 
                       [ self.lenght + self.width, 1, 1], 
                       [ self.lenght + self.width, 1, -1], 
-                      [-self.lenght - self.width, 1, 1]]) / self.radius
+                      [ self.lenght - self.width, 1, 1]]) / self.radius
         twist = np.array([wz,vx,vy])
         twist.shape = (3,1)
         u = np.dot(H, twist)
