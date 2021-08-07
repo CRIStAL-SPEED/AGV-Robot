@@ -14,7 +14,7 @@ class TquadDriver():
         self.radius = 0.03
         self.lenght = 0.1
         self.width = 0.075
-        self.sub_cmd = rospy.Subscriber('tquad/drive', Twist, self.cb_cmd_vel)
+        self.sub_cmd = rospy.Subscriber('tquad/cmd_vel', Twist, self.cb_cmd_vel)
         self.pub_motors = rospy.Publisher('tquad/serial_subscriber', Float32MultiArray, queue_size=1)
 
     def cb_cmd_vel(self, cmd):
