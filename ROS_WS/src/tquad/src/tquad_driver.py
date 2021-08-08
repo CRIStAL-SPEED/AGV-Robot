@@ -21,11 +21,13 @@ class TquadDriver():
         """
         to do something
         """
-        vel_motors = self.twist2pwm(cmd.linear.x, cmd.linear.y, cmd.angular.z)
+        vel_motors = self.twist2pwm( cmd.angular.z, cmd.linear.x, cmd.linear.y)
+        print(vel_motors)
         pwm_motors = Float32MultiArray(data=vel_motors)
-        #pub_motors.publish(pub_motors)
+        print(pwm_motors)
+        self.pub_motors.publish(pub_motors)
 
-    def twist2pwm(self, vx, vy, wz):
+    def twist2pwm(self, wz, vx, vy):
         H = np.array([[-self.lenght - self.width, 1, -1], 
                       [ self.lenght + self.width, 1, 1], 
                       [ self.lenght + self.width, 1, -1], 
