@@ -15,10 +15,10 @@ class TquadDriver():
         self.radius = 0.03
         self.lenght = 0.1
         self.width = 0.075
-        self.mpu = MPU9250(i2cbus=1, address=0x69)
+        #self.mpu = MPU9250(i2cbus=1, address=0x69)
         self.sub_cmd = rospy.Subscriber('tquad/cmd_vel', Twist, self.cb_cmd_vel)
         self.pub_motors = rospy.Publisher('tquad/serial_subscriber', Float32MultiArray, queue_size=1)
-        self.pub_odom = rospy.Publisher('tquad/odom', Odometry, queue_size=1, latch=True)
+        #self.pub_odom = rospy.Publisher('tquad/odom', Odometry, queue_size=1, latch=True)
 
     def cb_cmd_vel(self, cmd):
         """
@@ -40,7 +40,7 @@ class TquadDriver():
         u = np.dot(H, twist)
         u = np.around(u)
         return u.flatten().tolist()
-
+    """
     def odometry(self) :
         accel = self.mpu.readAccel()
         gyro = self.mpu.readGyro()
@@ -54,6 +54,7 @@ class TquadDriver():
         odom_msg.pose.pose.orientation.z = gyro['z']
 
         self.pub_odom.publish(odom_msg)
+    """
 
     def map2pw(self, value, min, max):
         return value**(max-min) + min
