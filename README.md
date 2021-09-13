@@ -1,52 +1,32 @@
-# Programme de control des robots mobiles T-quads
+# AGV Installation and User Guide
 
 ## Configurations
 * Ubuntu mate 16.04
 * ros kinetic
 * Python 2.7
 ## Installations
-### Installation de Ubuntu mate
-Télécharger ubuntu mate 16.04 et l'installer sur la carte mémoire de la raspberry pi.
 
-Lien de téléchargement : [ici](https://releases.ubuntu-mate.org/archived/16.04/)
-### Installation de ROS kinetic
-Suivre le tutoriel suivant pour installer ROS.
+### Ubuntu mate 16.04
+Download ubuntu mate 16.04 and install it on the memory card of the Tquad raspberry pi
 
-Tutoriel d'installation : [ici](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+Download link : [Ubuntu mate 16.04](https://releases.ubuntu-mate.org/archived/16.04/)
 
-### Installations des packages additionnels ROS (*Rosbridge* et *Rosserial*)
+### ROS kinetic
+Follow the following tutorial to install ROS.
 
+Installation tutorial : [ROS kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+
+### ROS additional packages
+
+Open a terminal and run the following commands to install the required ROS packages
+
+    sudo apt-get install ros-kinetic-usb-cam
     sudo apt-get install ros-kinetic-rosbridge-server
     sudo apt-get install ros-kinetic-rosserial-arduino
+    sudo apt-get install ros-kinetic-web-video-server
+    sudo apt-get install ros-kinetic-teleop-twist-keyboard
     
-### Installation du paquet tquad ros
-Créer et initialiser un espace de travail ros sur votre bureau
-
-    mkdir ros_workspace/src
-    cd ros_workspace/src
-    catkin_make
-
-Cloner le répertoire github
-
-    https://github.com/sarifou/AGV-Robot.git
-
-Copier-coller le package tquad du répertoire ros_package vers le src de votre espace de travail catkin et construiser à nouveau l'espace de travail : 
+### ROS T-Quad package
+Before downloading the ros tquad package, you must create a ros workspace. Once done copy and paste the tquad package into the src folder of your workspace and build it again with catkin :
 
     catkin_make
-
-### Installation du firmeware pour l'arduino méga.
-
-Avec le logiciel arduino, compiler le fichier firmeware.ino dans l'arduino mega du tquad
-
-## Liste des topics
-
-## Utilisation
-Pour contrôler le tquad avec un client rosbridge
-
-    roslaunch tquad tquad_bridge.launch
-
-Pour contrôler le tquad avec le teleop_key
-
-    roslaunch tquad tquad_teleop_key.launch
-
-
